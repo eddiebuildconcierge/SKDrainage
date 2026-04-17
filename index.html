@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Concierge × SK Drainage</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,900&display=swap" rel="stylesheet">
+<style>
+
+/* ── BRAND ─────────────────────────────────────────────── */
+:root {
+  --blue:     #2E52FE;
+  --black:    #000000;
+  --white:    #FFFFFF;
+  --dark:     #052839;
+  --taupe:    #F9F6EF;
+  --mid:      #DDDDDD;
+  --muted:    #666666;
+  --font:     'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ──────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--mid);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+}
+.nav-logo img { height: 26px; filter: invert(1) brightness(0); }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--blue);
+  background: rgba(46,82,254,0.08);
+  padding: 4px 12px; border-radius: 2px;
+}
+.nav-link {
+  font-size: 13px; font-weight: 500; color: var(--black);
+  text-decoration: none; opacity: 0.45; transition: opacity 0.15s;
+}
+.nav-link:hover { opacity: 1; }
+
+/* ── SHARED ───────────────────────────────────────────── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+section { width: 100%; }
+
+.label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 20px;
+}
+.label--light { color: rgba(255,255,255,0.4); }
+
+h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 900; letter-spacing: -0.03em; line-height: 1.05;
+}
+h2 em { font-style: normal; color: var(--blue); }
+h2.light { color: var(--white); }
+h2.light em { color: #7B97FF; }
+
+/* ── HERO ─────────────────────────────────────────────── */
+.hero {
+  background: var(--blue);
+  padding: 140px 48px 100px;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; right: -120px; top: -120px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; right: 80px; bottom: -80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1160px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 400px;
+  gap: 80px; align-items: center; position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 900; line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--white); margin-bottom: 24px;
+}
+.hero h1 span { color: rgba(255,255,255,0.3); display: block; }
+.hero-body {
+  font-size: 17px; font-weight: 400; line-height: 1.7;
+  color: rgba(255,255,255,0.65); max-width: 520px;
+}
+
+.hero-cards { display: flex; flex-direction: column; gap: 12px; }
+.hero-card {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 28px 32px; border-radius: 4px;
+}
+.hero-card .n {
+  font-size: 48px; font-weight: 900; letter-spacing: -0.04em;
+  color: var(--white); line-height: 1; display: block; margin-bottom: 4px;
+}
+.hero-card .l {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+}
+
+/* ── PROBLEM SECTION ──────────────────────────────────── */
+.problem {
+  background: var(--white);
+  padding: 100px 0;
+}
+.problem-header { max-width: 680px; margin-bottom: 64px; }
+.problem-header p {
+  margin-top: 20px; font-size: 17px; line-height: 1.65; color: var(--muted);
+}
+
+.problem-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--mid);
+}
+.p-card {
+  padding: 40px 40px;
+  border-right: 1px solid var(--mid);
+  border-bottom: 1px solid var(--mid);
+  transition: background 0.2s;
+}
+.p-card:nth-child(even) { border-right: none; }
+.p-card:nth-last-child(-n+2) { border-bottom: none; }
+.p-card:hover { background: var(--taupe); }
+.p-card-n {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 16px;
+}
+.p-card h3 {
+  font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 12px; line-height: 1.2;
+}
+.p-card p { font-size: 14px; line-height: 1.65; color: var(--muted); margin-bottom: 20px; }
+.p-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--blue);
+  border-top: 2px solid var(--blue); padding-top: 8px;
+}
+
+/* Orphan fix */
+.p-card--full {
+  grid-column: 1 / -1;
+  border-right: none;
+  max-width: 50%;
+}
+
+/* ── AI VOICE SECTION ─────────────────────────────────── */
+.voice {
+  background: var(--dark);
+  padding: 100px 0;
+}
+.voice-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.voice-body {
+  font-size: 16px; line-height: 1.7;
+  color: rgba(255,255,255,0.6); margin: 24px 0 36px;
+}
+.voice-points { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.voice-points li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: grid; grid-template-columns: 20px 1fr;
+  gap: 14px; align-items: start;
+}
+.voice-points li:last-child { border-bottom: none; }
+.voice-points li::before {
+  content: '→';
+  color: var(--blue); font-weight: 700; font-size: 14px;
+  margin-top: 1px;
+}
+.voice-points li span {
+  font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.55;
+}
+.voice-points li strong { color: var(--white); display: block; margin-bottom: 2px; font-size: 14px; }
+
+.voice-scenario {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px; padding: 36px;
+}
+.voice-scenario-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-bottom: 28px; display: block;
+}
+.scenario-step {
+  display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start;
+}
+.scenario-step:last-child { margin-bottom: 0; }
+.s-num {
+  background: var(--blue); color: var(--white);
+  font-size: 11px; font-weight: 900;
+  width: 24px; height: 24px; border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.s-text { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.55; }
+.s-text strong { color: var(--white); }
+
+.voice-quote {
+  margin-top: 32px;
+  border-left: 3px solid var(--blue);
+  padding-left: 20px;
+}
+.voice-quote p {
+  font-size: 15px; font-style: italic;
+  color: rgba(255,255,255,0.5); line-height: 1.6;
+}
+.voice-quote cite {
+  font-size: 12px; font-weight: 700; font-style: normal;
+  color: rgba(255,255,255,0.25); text-transform: uppercase;
+  letter-spacing: 0.06em; display: block; margin-top: 8px;
+}
+
+/* ── WHAT WE DO ───────────────────────────────────────── */
+.what {
+  background: var(--taupe);
+  padding: 100px 0;
+}
+.what-header { max-width: 680px; margin-bottom: 64px; }
+.what-header p { margin-top: 20px; font-size: 17px; line-height: 1.65; color: var(--muted); }
+
+.what-list { display: flex; flex-direction: column; gap: 2px; }
+.what-item {
+  background: var(--white);
+  display: grid; grid-template-columns: 72px 1fr 1fr;
+  align-items: center; padding: 28px 36px; gap: 36px;
+  transition: background 0.15s; cursor: default;
+}
+.what-item:hover { background: var(--black); }
+.what-item:hover .w-n { color: var(--blue); }
+.what-item:hover .w-title { color: var(--white); }
+.what-item:hover .w-body { color: rgba(255,255,255,0.45); }
+.what-item:hover .w-trigger { color: rgba(255,255,255,0.25); }
+.w-n {
+  font-size: 28px; font-weight: 900; letter-spacing: -0.04em;
+  color: rgba(0,0,0,0.1); line-height: 1; transition: color 0.15s;
+}
+.w-title {
+  font-size: 17px; font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.2; transition: color 0.15s;
+}
+.w-body {
+  font-size: 13px; line-height: 1.6; color: #666; transition: color 0.15s;
+}
+.w-trigger {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #aaa;
+  margin-top: 6px; transition: color 0.15s;
+}
+
+/* ── IMPLEMENTATION ───────────────────────────────────── */
+.impl {
+  background: var(--white);
+  padding: 100px 0;
+}
+.impl-header { max-width: 680px; margin-bottom: 72px; }
+
+.impl-stages {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; background: var(--mid);
+  border: 1px solid var(--mid);
+  margin-bottom: 2px;
+}
+.impl-stage {
+  background: var(--white);
+  padding: 36px 28px;
+  border-top: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+.impl-stage:hover { border-top-color: var(--blue); }
+.i-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 6px;
+}
+.i-when {
+  font-size: 12px; font-weight: 500; color: #aaa;
+  display: block; margin-bottom: 18px;
+}
+.impl-stage h3 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--black); margin-bottom: 20px; line-height: 1.2;
+}
+.impl-stage ul { list-style: none; }
+.impl-stage ul li {
+  font-size: 13px; color: var(--muted);
+  padding: 6px 0; border-bottom: 1px solid #f0f0f0; line-height: 1.4;
+}
+.impl-stage ul li:last-child { border-bottom: none; }
+
+/* Stage detail blocks */
+.stage-blocks { margin-top: 2px; display: flex; flex-direction: column; gap: 2px; }
+.stage-block {
+  display: grid; grid-template-columns: 260px 1fr;
+  background: var(--taupe);
+}
+.sb-left {
+  background: var(--black);
+  padding: 44px 36px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.sb-left .s-num-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 14px;
+}
+.sb-left h3 {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--white); line-height: 1.2; margin-bottom: 10px;
+}
+.sb-left .s-when {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: rgba(255,255,255,0.25);
+}
+.sb-right { padding: 44px 52px; }
+.sb-body {
+  font-size: 15px; line-height: 1.7; color: #333;
+  margin-bottom: 28px; max-width: 580px;
+}
+.sb-items {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--mid);
+}
+.sb-item {
+  padding: 16px 20px;
+  font-size: 13px; font-weight: 500; color: var(--black);
+  border-bottom: 1px solid var(--mid);
+  border-right: 1px solid var(--mid);
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.4;
+}
+.sb-item:nth-child(even) { border-right: none; }
+.sb-item::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0; margin-top: 5px;
+}
+.outcome {
+  margin-top: 24px;
+  background: rgba(46,82,254,0.06);
+  border-left: 3px solid var(--blue);
+  padding: 14px 18px;
+  font-size: 13px; font-weight: 500; color: var(--blue); line-height: 1.5;
+}
+
+/* ── SUPPORT ──────────────────────────────────────────── */
+.support {
+  background: var(--black);
+  padding: 100px 0;
+}
+.support-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 52px;
+}
+.support-card {
+  background: #0a0a0a;
+  padding: 36px;
+  border-top: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+.support-card:hover { border-top-color: var(--blue); }
+.support-card h3 {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 14px;
+}
+.support-card p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.4); }
+
+/* ── PRICING ──────────────────────────────────────────── */
+.pricing {
+  background: var(--taupe);
+  padding: 100px 0;
+}
+.pricing-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--mid);
+  padding: 52px 48px;
+}
+.pricing-card .p-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--blue);
+  display: block; margin-bottom: 24px;
+}
+.price-num {
+  font-size: 68px; font-weight: 900; letter-spacing: -0.04em;
+  color: var(--black); line-height: 1;
+}
+.price-num sup { font-size: 32px; vertical-align: super; }
+.price-per {
+  font-size: 15px; color: var(--muted); margin-top: 6px; display: block;
+}
+.price-setup {
+  font-size: 14px; color: var(--muted);
+  margin: 16px 0 28px; padding-bottom: 28px;
+  border-bottom: 1px solid var(--mid);
+}
+.price-setup strong { color: var(--black); }
+.price-includes { list-style: none; }
+.price-includes li {
+  display: flex; gap: 12px; align-items: center;
+  font-size: 14px; color: var(--black);
+  padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+}
+.price-includes li:last-child { border-bottom: none; }
+.price-includes li::before {
+  content: '✓';
+  color: var(--blue); font-weight: 700; font-size: 13px; flex-shrink: 0;
+}
+.price-includes li.no::before { content: '✕'; color: #ccc; }
+.price-includes li.no { color: var(--muted); }
+
+.pricing-compare { padding-top: 8px; }
+.pricing-compare h3 {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.pricing-compare p {
+  font-size: 15px; line-height: 1.65; color: var(--muted); margin-bottom: 32px;
+}
+.compare-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0; border-bottom: 1px solid var(--mid);
+  font-size: 14px;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row .c-label { color: var(--muted); }
+.compare-row .c-bad { color: #aaa; text-decoration: line-through; }
+.compare-row .c-good { color: var(--blue); font-weight: 700; }
+
+/* ── NEXT STEPS ───────────────────────────────────────── */
+.next {
+  background: var(--blue);
+  padding: 100px 0;
+}
+.next-header { margin-bottom: 56px; }
+.next-header h2 { color: var(--white); }
+.steps { display: flex; flex-direction: column; gap: 2px; }
+.step {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: grid; grid-template-columns: 64px 200px 1fr;
+  align-items: center; padding: 26px 36px; gap: 36px;
+  transition: background 0.15s;
+}
+.step:hover { background: rgba(255,255,255,0.14); }
+.step-n {
+  font-size: 36px; font-weight: 900; letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.18); line-height: 1;
+}
+.step-when {
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  background: rgba(255,255,255,0.1); padding: 8px 14px;
+  border-radius: 2px; text-align: center;
+}
+.step-action { font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.4; }
+
+/* ── FOOTER ───────────────────────────────────────────── */
+footer {
+  background: var(--black);
+  padding: 36px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid #111;
+}
+footer .f-left { font-size: 13px; color: #444; }
+footer .f-left strong { color: #666; }
+footer .f-right { font-size: 12px; color: #333; }
+
+/* ── REVEAL ───────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .hero, .problem, .voice, .what, .impl, .support, .pricing, .next { padding-left: 24px; padding-right: 24px; }
+  .container { padding: 0 24px; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-cards { display: none; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .p-card { border-right: none; }
+  .p-card--full { max-width: 100%; }
+  .voice-inner { grid-template-columns: 1fr; }
+  .what-item { grid-template-columns: 48px 1fr; }
+  .w-body { display: none; }
+  .impl-stages { grid-template-columns: 1fr 1fr; }
+  .stage-block { grid-template-columns: 1fr; }
+  .sb-right { padding: 32px 24px; }
+  .sb-items { grid-template-columns: 1fr; }
+  .sb-item { border-right: none !important; }
+  .support-grid { grid-template-columns: 1fr; }
+  .pricing-inner { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 48px 1fr; }
+  .step-when { display: none; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://raw.githubusercontent.com/buildconcierge26/buildconcierge/refs/heads/main/build-concierge-white.png" alt="Build Concierge">
+  </div>
+  <div class="nav-right">
+    <span class="nav-badge">Prepared for SK Drainage</span>
+    <a class="nav-link" href="#problem">The Problem</a>
+    <a class="nav-link" href="#voice">AI Voice</a>
+    <a class="nav-link" href="#what">What We Do</a>
+    <a class="nav-link" href="#impl">Implementation</a>
+    <a class="nav-link" href="#pricing">Pricing</a>
+    <a class="nav-link" href="#next">Next Steps</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-tag">Steve &amp; Lucy · SK Drainage · Workington</span>
+      <h1>Stop being the<br><span>receptionist.</span></h1>
+      <p class="hero-body">You're a drainage engineer running a growing business. Build Concierge handles the calls, logs the jobs, reviews the job cards and keeps the admin moving — so you can focus on the work that actually builds SK Drainage.</p>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <span class="n">100+</span>
+        <span class="l">Calls handled daily — automatically</span>
+      </div>
+      <div class="hero-card">
+        <span class="n">&lt; 4 wks</span>
+        <span class="l">From sign-up to fully live</span>
+      </div>
+      <div class="hero-card">
+        <span class="n">£2k/mo</span>
+        <span class="l">vs. a full-time hire — no NI, no sick days</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-header reveal">
+      <span class="label">Sound familiar?</span>
+      <h2>The things stealing your time <em>every single day.</em></h2>
+      <p>Every one of these came directly from your conversation with Eddie. These aren't guesses — they're exactly what's holding SK Drainage back from growing without burning out.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="p-card">
+        <span class="p-card-n">01</span>
+        <h3>Your mobile is the business number. 24/7.</h3>
+        <p>Over 100 calls on a busy day. Evenings, weekends, holidays in Mallorca — your phone never stops. Before you've even started the day's work, you're going through voicemails, WhatsApps and emails.</p>
+        <span class="p-tag">AI receptionist takes every call</span>
+      </div>
+      <div class="p-card">
+        <span class="p-card-n">02</span>
+        <h3>Every job manually logged into BigChange.</h3>
+        <p>Email or phone call comes in — someone has to check it, find or create the site, and log the job in BigChange. New clients and rural locations are a nightmare. You've been on Rightmove just to find an address.</p>
+        <span class="p-tag">Email → job created automatically</span>
+      </div>
+      <div class="p-card">
+        <span class="p-card-n">03</span>
+        <h3>Concerto portal jobs re-keyed by hand.</h3>
+        <p>The new Western Furness Council contract runs through Concerto. Every job raised in that portal still has to be manually entered into BigChange. As you win more council work, this gets worse.</p>
+        <span class="p-tag">Concerto → BigChange automatically</span>
+      </div>
+      <div class="p-card">
+        <span class="p-card-n">04</span>
+        <h3>Job cards come back lacking information.</h3>
+        <p>Most engineers aren't Kev. "Clear block toilet, needs further work" tells you nothing. You and Lucy spend time chasing, deciphering and tidying job cards before they're fit to go to a client.</p>
+        <span class="p-tag">AI reviews &amp; professionalises every card</span>
+      </div>
+      <div class="p-card p-card--full">
+        <span class="p-card-n">05</span>
+        <h3>No time to actually run and grow the business.</h3>
+        <p>Building control applications, traffic management plans, quotes, reports — all sitting on the list while phone calls eat your day. The council contract could bring three wagons and a van of work. Right now, that would break you.</p>
+        <span class="p-tag">Give Steve his evenings and weekends back</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI VOICE -->
+<section class="voice" id="voice">
+  <div class="container">
+    <div class="voice-inner">
+      <div>
+        <span class="label label--light">Concierge Receptionist</span>
+        <h2 class="light">An AI that answers your phone.<br><em>Like a member of staff.</em></h2>
+        <p class="voice-body">Trained on SK Drainage — your job types, your coverage area, your way of doing things. It handles the calls so you don't have to, and pushes everything straight into BigChange.</p>
+        <ul class="voice-points">
+          <li>
+            <span>
+              <strong>Knows your job types</strong>
+              Tanker, jetting, survey, call-out, CCTV — it goes down the right path of logic for each one and asks all the right questions.
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Handles the routine, escalates the important</strong>
+              Routine enquiries dealt with automatically. A big oil spill or urgent council job? It texts Steve straight away so nothing critical gets missed.
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Works 24/7 — including out of hours</strong>
+              Your out-of-hours mobile number becomes the AI. It takes the call, logs the details and notifies you only when it matters.
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Creates the job in BigChange automatically</strong>
+              Once it's gathered all the details — site, job type, contact, description — it creates the job directly in BigChange. No one touches a keyboard.
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Works for commercial clients</strong>
+              You told us you're 75–80% commercial. Commercial clients understand AI voice — it's a great fit for the type of calls you get.
+            </span>
+          </li>
+        </ul>
+        <div class="voice-quote">
+          <p>"You're basically building a receptionist who could take a call, log a job, notify me and do all that sort of stuff."</p>
+          <cite>Steve Oakes · SK Drainage · April 2026</cite>
+        </div>
+      </div>
+      <div>
+        <div class="voice-scenario">
+          <span class="voice-scenario-title">How it works — a real SK Drainage scenario</span>
+          <div class="scenario-step">
+            <div class="s-num">1</div>
+            <div class="s-text">Customer rings SK Drainage at 9pm. <strong>Steve's AI receptionist answers immediately.</strong></div>
+          </div>
+          <div class="scenario-step">
+            <div class="s-num">2</div>
+            <div class="s-text">AI asks the right questions — location, job type, access, urgency. <strong>Is it a tanker job or a jetting call-out?</strong></div>
+          </div>
+          <div class="scenario-step">
+            <div class="s-num">3</div>
+            <div class="s-text">Routine enquiry: AI logs all details, <strong>creates the job in BigChange automatically</strong> as unallocated. Steve sees it in the morning.</div>
+          </div>
+          <div class="scenario-step">
+            <div class="s-num">4</div>
+            <div class="s-text">Urgent or high-value job: AI <strong>texts Steve immediately</strong> with the full context so he can decide whether to act.</div>
+          </div>
+          <div class="scenario-step">
+            <div class="s-num">5</div>
+            <div class="s-text">Customer who wants Steve specifically: AI says it will get Steve to ring them back, <strong>sends Steve a summary text within seconds.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what" id="what">
+  <div class="container">
+    <div class="what-header reveal">
+      <span class="label">What we build for you</span>
+      <h2>Seven automations, <em>all built around SK Drainage.</em></h2>
+      <p>Every one of these came from your conversation. We build them all — you don't configure anything yourself.</p>
+    </div>
+    <div class="what-list reveal">
+      <div class="what-item">
+        <div class="w-n">01</div>
+        <div class="w-title">AI Receptionist — Every Call Handled</div>
+        <div>
+          <div class="w-body">Trained on your business. Answers every call, routes it correctly, creates the job in BigChange. Steve's phone stops ringing for every routine enquiry.</div>
+          <div class="w-trigger">Trigger: Inbound call to SK Drainage number</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">02</div>
+        <div class="w-title">Email → BigChange Job, Automatically</div>
+        <div>
+          <div class="w-body">Email comes in, AI reads it, finds or creates the site and contact in BigChange, and logs the job. New clients and addresses handled too — no manual searching needed.</div>
+          <div class="w-trigger">Trigger: Job request email received</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">03</div>
+        <div class="w-title">Concerto Portal → BigChange Job</div>
+        <div>
+          <div class="w-body">Western Furness Council raises a job in Concerto. It appears in BigChange within seconds. No logging in to the portal, no re-keying, no checking for missed jobs.</div>
+          <div class="w-trigger">Trigger: Job raised in Concerto portal</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">04</div>
+        <div class="w-title">Job Card AI Review &amp; Correction</div>
+        <div>
+          <div class="w-body">Engineer completes job. AI reviews the notes, corrects spelling and grammar, fleshes out thin descriptions and flags anything missing. Every job card made to Kev's standard — automatically.</div>
+          <div class="w-trigger">Trigger: Job completed in BigChange</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">05</div>
+        <div class="w-title">Call Transcription → BigChange Note</div>
+        <div>
+          <div class="w-body">Every call handled through the AI is transcribed, summarised and pushed into BigChange as a note against the right contact. Full record of what was said, no manual write-up.</div>
+          <div class="w-trigger">Trigger: Call ends in Concierge Support</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">06</div>
+        <div class="w-title">Quote Required → Automated Next Step</div>
+        <div>
+          <div class="w-body">Engineer marks a job as needing a quote. AI reads the job card, determines if it's a simple or complex quote, and either triggers an auto-quote or notifies Steve to go on site.</div>
+          <div class="w-trigger">Trigger: "Quote required" marked on job card</div>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="w-n">07</div>
+        <div class="w-title">Unified Communications Inbox</div>
+        <div>
+          <div class="w-body">Every customer email, call and WhatsApp visible in one place — Concierge Support. No more switching between platforms. Full conversation history per client, all pushing into BigChange automatically.</div>
+          <div class="w-trigger">Trigger: Any inbound message or call</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLEMENTATION -->
+<section class="impl" id="impl">
+  <div class="container">
+    <div class="impl-header reveal">
+      <span class="label">Implementation</span>
+      <h2>We come to Workington.<br><em>You don't configure a thing.</em></h2>
+    </div>
+    <div class="impl-stages reveal">
+      <div class="impl-stage">
+        <span class="i-num">Stage 01</span>
+        <span class="i-when">On sign-up</span>
+        <h3>Kick-Off Call</h3>
+        <ul>
+          <li>Meet your Success Manager</li>
+          <li>AI script drafted for SK Drainage</li>
+          <li>Priorities agreed with Steve &amp; Lucy</li>
+          <li>On-site Workington date confirmed</li>
+        </ul>
+      </div>
+      <div class="impl-stage">
+        <span class="i-num">Stage 02</span>
+        <span class="i-when">Week 1</span>
+        <h3>On-Site Build</h3>
+        <ul>
+          <li>We come to Workington</li>
+          <li>AI receptionist goes live</li>
+          <li>Email → job workflow built</li>
+          <li>Concerto connected</li>
+          <li>Tested on real jobs same day</li>
+        </ul>
+      </div>
+      <div class="impl-stage">
+        <span class="i-num">Stage 03</span>
+        <span class="i-when">Weeks 2–3</span>
+        <h3>Test &amp; Refine</h3>
+        <ul>
+          <li>AI trained on real SK calls</li>
+          <li>Job card review tuned</li>
+          <li>Lucy trained — no tech needed</li>
+          <li>Quote workflow refined</li>
+          <li>Out-of-hours rules confirmed</li>
+        </ul>
+      </div>
+      <div class="impl-stage">
+        <span class="i-num">Stage 04</span>
+        <span class="i-when">Week 4</span>
+        <h3>Fully Live</h3>
+        <ul>
+          <li>All workflows active</li>
+          <li>Phone handled automatically</li>
+          <li>Jobs logged without anyone typing</li>
+          <li>Steve gets his evenings back</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stage-blocks reveal">
+      <div class="stage-block">
+        <div class="sb-left">
+          <div>
+            <span class="s-num-tag">Stage 01</span>
+            <h3>Kick-Off Call</h3>
+          </div>
+          <span class="s-when">On sign-up</span>
+        </div>
+        <div class="sb-right">
+          <p class="sb-body">As soon as you sign up, your dedicated Success Manager gets in touch. We draft the AI receptionist script together — your job types, your coverage area, how you want urgent calls handled. On-site date booked before the call ends.</p>
+          <div class="sb-items">
+            <div class="sb-item">Meet your dedicated Success Manager</div>
+            <div class="sb-item">AI call script built around SK Drainage's services</div>
+            <div class="sb-item">Priorities agreed — what to build first</div>
+            <div class="sb-item">Triage logic mapped — tanker, jetting, survey, call-out</div>
+            <div class="sb-item">Out-of-hours escalation rules defined</div>
+            <div class="sb-item">On-site visit to Workington date locked in</div>
+          </div>
+          <div class="outcome">Outcome: Clear build plan, AI script ready, on-site date confirmed.</div>
+        </div>
+      </div>
+      <div class="stage-block">
+        <div class="sb-left">
+          <div>
+            <span class="s-num-tag">Stage 02</span>
+            <h3>On-Site Build</h3>
+          </div>
+          <span class="s-when">Week 1</span>
+        </div>
+        <div class="sb-right">
+          <p class="sb-body">Build Concierge comes to Workington. We build everything in your live BigChange environment, with your actual job types, your real addresses, your workflows. You watch it work on real jobs before we leave.</p>
+          <div class="sb-items">
+            <div class="sb-item">AI receptionist live on SK Drainage's number</div>
+            <div class="sb-item">Triage logic built and tested on real call types</div>
+            <div class="sb-item">Email → BigChange job workflow configured</div>
+            <div class="sb-item">Concerto portal integration connected and tested</div>
+            <div class="sb-item">New client &amp; site auto-creation set up</div>
+            <div class="sb-item">Job card AI review workflow built</div>
+            <div class="sb-item">Real calls and emails run through before we leave</div>
+            <div class="sb-item">Lucy shown how to use it — no tech knowledge needed</div>
+          </div>
+          <div class="outcome">Outcome: Steve's phone stops ringing. Jobs start appearing in BigChange on their own.</div>
+        </div>
+      </div>
+      <div class="stage-block">
+        <div class="sb-left">
+          <div>
+            <span class="s-num-tag">Stage 03</span>
+            <h3>Test &amp; Refine</h3>
+          </div>
+          <span class="s-when">Weeks 2–3</span>
+        </div>
+        <div class="sb-right">
+          <p class="sb-body">Real calls, real jobs, real engineer notes — everything refined on actual SK Drainage data. Nothing goes fully live until it's working exactly as expected for your business.</p>
+          <div class="sb-items">
+            <div class="sb-item">AI receptionist refined on real call scenarios</div>
+            <div class="sb-item">Rural location &amp; postcode handling tested</div>
+            <div class="sb-item">Job card review tuned on real engineer notes</div>
+            <div class="sb-item">Concerto portal validated end-to-end</div>
+            <div class="sb-item">Quote workflow reviewed with Steve</div>
+            <div class="sb-item">Escalation rules confirmed with live test calls</div>
+          </div>
+          <div class="outcome">Outcome: Everything tested on real SK Drainage data. Steve and Lucy confident.</div>
+        </div>
+      </div>
+      <div class="stage-block">
+        <div class="sb-left">
+          <div>
+            <span class="s-num-tag">Stage 04</span>
+            <h3>Fully Live</h3>
+          </div>
+          <span class="s-when">Week 4</span>
+        </div>
+        <div class="sb-right">
+          <p class="sb-body">All workflows active. The AI handles every inbound call. Jobs appear in BigChange from emails and Concerto without anyone touching a keyboard. Job cards reviewed and professionalised on completion. Your Success Manager stays on hand — permanently, not just for set-up.</p>
+          <div class="sb-items">
+            <div class="sb-item">AI receptionist handling all inbound calls</div>
+            <div class="sb-item">Email → BigChange job running automatically</div>
+            <div class="sb-item">Concerto → BigChange fully automated</div>
+            <div class="sb-item">Job card AI review on every completion</div>
+            <div class="sb-item">Monthly Customer Connect sessions begin</div>
+            <div class="sb-item">Dedicated Success Manager — permanently on hand</div>
+          </div>
+          <div class="outcome">Outcome: Steve gets his evenings and weekends back. SK Drainage scales without new headcount.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+  <div class="container">
+    <span class="label label--light reveal">After go-live</span>
+    <h2 class="light reveal">We don't disappear<br><em>once you're live.</em></h2>
+    <div class="support-grid reveal">
+      <div class="support-card">
+        <h3>Dedicated Success Manager</h3>
+        <p>One named person who knows SK Drainage, knows your BigChange setup and is always reachable — phone, email or live chat. Not a helpdesk. Not a queue. A real person who knows you.</p>
+      </div>
+      <div class="support-card">
+        <h3>Monthly Customer Connect</h3>
+        <p>Regular sessions with Build Concierge customers — most of them in drainage, just like you. Share ideas, hear what's working, get early access to new features. You're not on your own.</p>
+      </div>
+      <div class="support-card">
+        <h3>Continuous Improvement</h3>
+        <p>As SK Drainage grows — especially if the council work scales up — your automations grow with you. We proactively suggest new workflows and keep your BigChange as tight as it can be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-inner">
+      <div class="reveal">
+        <span class="label">Pricing</span>
+        <h2>Simple, transparent.<br><em>No surprises.</em></h2>
+        <div class="pricing-card" style="margin-top:36px;">
+          <span class="p-label">All-inclusive subscription</span>
+          <div class="price-num"><sup>£</sup>1,995<span style="font-size:18px;font-weight:500;color:var(--muted)">/mo</span></div>
+          <span class="price-per">All modules, unlimited workflows, dedicated Success Manager</span>
+          <p class="price-setup">One-time setup &amp; onboarding fee · <strong>£2,995</strong></p>
+          <ul class="price-includes">
+            <li>AI Receptionist — unlimited calls</li>
+            <li>Workflow Builder — unlimited automations</li>
+            <li>Concierge Support — unified inbox</li>
+            <li>Concerto &amp; portal integrations</li>
+            <li>Dedicated Success Manager</li>
+            <li>On-site build at SK Drainage HQ</li>
+            <li>Monthly Customer Connect access</li>
+            <li class="no">No per-user fees</li>
+            <li class="no">No IT team needed</li>
+            <li class="no">No surprise invoices</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-compare reveal">
+        <h3>Build Concierge vs. a new hire</h3>
+        <p>You told us you were looking at taking on another person to handle calls, emails and job logging. Here's the comparison.</p>
+        <div class="compare-row">
+          <span class="c-label">Monthly cost</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">£2,500–3,500</span>
+            <span class="c-good">£1,995</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Employer NI</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">+£3–4k/yr</span>
+            <span class="c-good">None</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Holiday cover</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">Your problem</span>
+            <span class="c-good">Works 24/7</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Sick days</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">Still your problem</span>
+            <span class="c-good">Never misses a day</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Out-of-hours coverage</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">Back to Steve's phone</span>
+            <span class="c-good">Fully covered</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Scales with council work</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">Hire another person</span>
+            <span class="c-good">Handles any volume</span>
+          </div>
+        </div>
+        <div class="compare-row">
+          <span class="c-label">Connects to BigChange</span>
+          <div style="display:flex;gap:24px;">
+            <span class="c-bad">Still manual</span>
+            <span class="c-good">Fully automated</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next" id="next">
+  <div class="container">
+    <div class="next-header reveal">
+      <span class="label" style="color:rgba(255,255,255,0.4);">Next steps</span>
+      <h2 style="color:var(--white);">Ready when<br>you are, Steve.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-when">23rd April — 4pm</div>
+        <div class="step-action">Follow-up call with Steve &amp; Lucy. Go through this presentation, answer any questions, agree to move forward.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-when">On sign-up</div>
+        <div class="step-action">Kick-off call with your dedicated Success Manager. AI receptionist script drafted, on-site Workington date locked in.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-when">Week 1</div>
+        <div class="step-action">Build Concierge on-site in Workington. AI receptionist live, email and Concerto workflows built and tested the same day.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-when">Week 4</div>
+        <div class="step-action">Fully live. Steve's phone stops ringing for routine enquiries. Jobs log themselves. SK Drainage grows — without burning out.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-left">
+    <strong>Build Concierge</strong> · 1270 Thorpe Park, Leeds LS15 8ZB · buildconcierge.com
+  </div>
+  <div class="f-right">© 2026 Build Concierge. Prepared for SK Drainage.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Stagger grid children
+document.querySelectorAll('.problem-grid, .support-grid, .impl-stages, .steps, .what-list').forEach(grid => {
+  [...grid.children].forEach((child, i) => { child.style.transitionDelay = `${i * 60}ms`; });
+});
+</script>
+</body>
+</html>
